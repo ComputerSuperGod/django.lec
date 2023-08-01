@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class MysiteConfig(AppConfig):
+class 상품소개Config(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'mysite'
+    name = '상품소개'
