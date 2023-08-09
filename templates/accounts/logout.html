@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>로그아웃</h2>
+  <p>로그아웃되었습니다. 다른 계정으로 다시 로그인하거나 원하는 작업을 수행하세요.</p>
+  <a href="{% url 'accounts:login' %}">로그인 페이지로 돌아가기</a>
+  <!-- 다른 내용이나 링크 추가 가능 -->
+{% endblock %}

@@ -29,11 +29,15 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="#services">메인페이지</a></li>
                         <li class="nav-item"><a class="nav-link" href="상품소개">상품소개</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="my_info">내정보</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact">고객지원</a></li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" href="{% url
+                    'accounts:logout' %}">{{ user.username }} (로그아웃)</a></li>
+                        {% else %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'accounts:login' %}">로그인</a></li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>

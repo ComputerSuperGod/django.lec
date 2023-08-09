@@ -5,3 +5,8 @@ from django.contrib import admin
 from .models import MainContent
 
 admin.site.register(MainContent)
+
+from django.contrib import admin
+from .models import Subcontent
+
+admin.site.register(Subcontent)

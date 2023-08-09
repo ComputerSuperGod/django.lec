@@ -1,38 +1,7 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="ko">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Small Business - Start Bootstrap Template</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="static/assets/favicon.ico" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
-    </head>
-    <body>
+{% extends 'base.html' %}
+{% block content %}
         <!-- Responsive navbar-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container px-5">
-                <a class="navbar-brand" href="#!">경희그룹</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <!-- 변경된 부분: "상품소개" 메뉴 항목 추가 -->
-                        <li class="nav-item"><a class="nav-link" href="메인페이지_URL">메인페이지</a></li>
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="상품소개_URL">상품소개</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">내정보(찜목록)</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">로그인/회원가입</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">고객지원</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+       <!--네비게이션 바 삭제-->
         <!-- Page Content-->
         <div class="container px-4 px-lg-5">
             <!-- Heading Row-->
@@ -49,39 +18,26 @@
                 <div class="card-body"><p class="text-white m-0">Product Category</p></div>
             </div>
             <!-- Content Row-->
-            <div class="row gx-4 gx-lg-5">
-                <div class="col-md-4 mb-5">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h2 class="card-title">상품종류 1</h2>
-                            <p class="card-text">상품종류에 대한 본사의 특징 및 홍보용 문장을 작성하는 곳입니다.</p>
-                        </div>
-                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-5">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h2 class="card-title">상품종류 2</h2>
-                            <p class="card-text">상품종류에 대한 본사의 특징 및 홍보용 문장을 작성하는 곳입니다.</p>
-                        </div>
-                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-5">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h2 class="card-title">상품종류 3</h2>
-                            <p class="card-text">상품종류에 대한 본사의 특징 및 홍보용 문장을 작성하는 곳입니다.</p>
-                        </div>
-                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
-                    </div>
-                </div>
+                <div class="row gx-4 gx-lg-5">
+                    {% if content_list %}
+                        {% for content in content_list %}
+                            <div class="col-md-4 mb-5">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h2 class="card-title">{{ content.title }}</h2>
+                                        <p class="card-text">{{ content.content | truncatewords:30 }}</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a class="btn btn-primary btn-sm" href="/상품소개/{{ content.id }}/">More Info</a>
+                                    </div>
+                                </div>
+                            </div>
+                         {% endfor %}
+                    {% else %}
+                        <p>content가 없습니다.</p>
+                    {% endif %}
             </div>
         </div>
         <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
-        </footer>
-    </body>
-</html>
+        <!--footer 부분 삭제-->
+{% endblock %}
