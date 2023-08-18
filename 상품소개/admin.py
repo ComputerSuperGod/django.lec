@@ -7,6 +7,7 @@ from .models import MainContent
 admin.site.register(MainContent)
 
 from django.contrib import admin
-from .models import Subcontent
+from .models import Subcontent, Comment
 
 admin.site.register(Subcontent)
+admin.site.register(Comment)
